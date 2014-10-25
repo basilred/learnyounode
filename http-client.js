@@ -6,6 +6,9 @@ http.get(baseUrl, function (response) {
 	response.setEncoding('utf8');
 	response.on('data', function (chunk) {
 		urlData += chunk;
-		console.log(chunk);
+	});
+	response.on('end', function () {
+		console.log(urlData.length);
+		console.log(urlData);
 	});
 });
