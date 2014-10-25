@@ -1,11 +1,10 @@
-var fs = require('fs'),
-	path = require('path'),
+var makels = require('./make_it_modular.js'),
 	dir = process.argv[2],
-	ext = '.' + process.argv[3];
+	ext = process.argv[3];
 
-fs.readdir(dir, function(err, files) {
-	if (err) throw err;
-	files.forEach(function(file) {
-		if (path.extname(file) === ext) console.log(file);
+makels(dir, ext, function (err, files) {
+	if (err) return console.log("There was an error:", err);
+	files.forEach(function (file) {
+		console.log(file);
 	});
-});
+})
